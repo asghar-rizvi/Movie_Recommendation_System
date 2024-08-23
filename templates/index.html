@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomePage</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="container-rec">
+        <h2 class ='heading'>MOVIE RECOMMENDATIONS</h2>
+        <div class="rec-list">
+          <form method="POST" action="/recommend">
+            <select name="movie_search" id="search-bar">
+              <option value="" disabled selected>Select an option</option>
+              {% for option in options %}
+                  <option value="{{ option }}">{{ option }}</option>
+              {% endfor %}
+            </select>
+            <br>
+            <button>Recommend</button>
+          </form>
+          <div class="posters-grid">
+            {% for name, poster in recommendations %}
+                <div class="poster-item">
+                    <div class="poster-title">{{ name }}</div>
+                    <img src="{{ poster }}" alt="{{ name }}" class="poster-img"/>
+                </div>
+            {% endfor %}
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
